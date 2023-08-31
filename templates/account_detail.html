@@ -1,0 +1,19 @@
+{% load rest_framework %}
+
+<html>
+<body>
+
+<h1>Account: {{ points_account.user.first_name}} {{ points_account.user.last_name}} ({{ points_account.user.email }}) </h1>
+<h1>Current balance: {{ points_account.balance }} </h1>
+
+<h2>Change balance: </h2>
+<form action="{% url 'points_account_detail_view' pk=points_account.pk %}" method="POST">
+    {% csrf_token %}
+    {% render_form serializer %}
+
+    <input type="submit" value="Save">
+</form>
+
+<a href={% url 'points_account_list_view' %} >Back to list</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+
+
+<html>
+<body>
+<h1>Accounts</h1>
+    {% include "previous_and_next.html" %}
+<ul>
+    {% for result in results %}
+        <li>
+            {{ result.user.first_name }}
+            {{ result.user.last_name }}
+            {{ result.user.email }}
+            {{ result.balance }}
+            <a href="{% url 'points_account_detail_view' pk=result.user.id %}">Go to account details</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
+
+

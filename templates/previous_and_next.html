@@ -1,0 +1,21 @@
+<ul class="pager">
+  {% if previous %}
+    <li class="previous">
+      <a href="{{ previous }}">&laquo; Previous page</a>
+    </li>
+  {% else %}
+    <li class="previous disabled">
+      <a href="#">&laquo; Previous page</a>
+    </li>
+  {% endif %}
+
+  {% if next %}
+    <li class="next">
+      <a href="{{ next }}">Next page &raquo;</a>
+    </li>
+  {% else %}
+    <li class="next disabled">
+      <a href="#">Next page &raquo;</a>
+    </li>
+  {% endif %}
+</ul>

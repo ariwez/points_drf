@@ -1,0 +1,44 @@
+version: "3.8"
+x-base:
+  &base-service
+  build: .
+  env_file:
+    - .env
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  web:
+    << : *base-service
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  migrate:
+    << : *base-service
+    command: python manage.py migrate
+    depends_on:
+      - db
+
+  test:
+    << : *base-service
+    command: python manage.py test
+    depends_on:
+      - db
+
+  import_users_data:
+    << : *base-service
+    command: python manage.py import_users_data users.csv
+    depends_on:
+      - db
