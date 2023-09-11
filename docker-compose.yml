@@ -42,3 +42,9 @@ services:
     command: python manage.py import_users_data users.csv
     depends_on:
       - db
+
+  coverage:
+    << : *base-service
+    depends_on:
+      - db
+    command: sh -c "coverage "run" "manage.py" "test" "--noinput" && coverage "report""

@@ -21,5 +21,9 @@ run-import-users-data: ## Build and run import users data in docker
 	docker-compose build import_users_data
 	docker-compose run import_users_data
 
+run-coverage: ## Build and run coverage in docker
+	docker-compose build coverage
+	docker-compose run coverage
+
 # https://stackoverflow.com/a/63784549
 .PHONY: $(shell sed -n -e '/^$$/ { n ; /^[^ .\#][^ ]*:/ { s/:.*$$// ; p ; } ; }' $(MAKEFILE_LIST))

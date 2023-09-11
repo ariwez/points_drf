@@ -4,3 +4,5 @@ djangorestframework==3.14.0
 drf-yasg==1.21.7
 pandas==2.0.3
 factory-boy==3.3.0
+coverage==7.3.1
+
